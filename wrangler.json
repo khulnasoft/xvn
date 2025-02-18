@@ -1,0 +1,32 @@
+{
+  "compatibility_date": "2024-09-19",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "src/index.js",
+  "name": "xvn",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "xvn_local_database_id",
+      "database_name": "xvn_local_database"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "xvn_local_bucket"
+    }
+  ],
+  "assets": {
+    "directory": "./src/assets/"
+  },
+  "dev": {
+    "local_protocol": "http",
+    "port": 1337
+  },
+  "placement": {
+    "mode": "smart"
+  }
+}
