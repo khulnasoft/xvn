@@ -4660,7 +4660,7 @@ var bearerAuth = /* @__PURE__ */ __name((options) => {
   if (options.prefix === void 0) {
     options.prefix = PREFIX;
   }
-  const realm = options.realm?.replace(/"/g, '\\"');
+  const realm = options.realm?.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
   const prefixRegexStr = options.prefix === "" ? "" : `${options.prefix} +`;
   const regexp = new RegExp(`^${prefixRegexStr}(${TOKEN_STRINGS}) *$`);
   const wwwAuthenticatePrefix = options.prefix === "" ? "" : `${options.prefix} `;
