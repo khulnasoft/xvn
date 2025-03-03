@@ -21,7 +21,7 @@
 You can quickly get started by installing/executing `xvn` with the following command:
 
 ```bash
-npx -y khulnasoft/xvn
+npx -y xvn
 ```
 
 #### Production
@@ -231,7 +231,7 @@ A `scope` contains an array of privileges that define both the type(s) of & acce
 
 ### API
 
-We have rich, interactive API docs out-of-the-box with the help of our friends [Scalar](https://scalar.com/). The docs can be found at the registry root when running `xvn` locally (ex. run `npx -y khulnasoft/xvn` &/or check out this repo & run `npm run dev`)
+We have rich, interactive API docs out-of-the-box with the help of our friends [Scalar](https://scalar.com/). The docs can be found at the registry root when running `xvn` locally (ex. run `npx -y xvn` &/or check out this repo & run `npm run dev`)
 
 ### `npm` Client Compatibility
 
