@@ -34,7 +34,7 @@ var require_package = __commonJS({
       name: "xvn",
       version: "0.1.1",
       license: "FSL-1.1-MIT",
-      author: "nrz technology inc. <support@nrz.khulnasoft.com> (http://nrz.khulnasoft.com)",
+      author: "KhulnaSoft, Ltd <support@nrz.khulnasoft.com> (http://nrz.khulnasoft.com)",
       repository: {
         type: "git",
         url: "git+https://github.com/khulnasoft/xvn.git"
@@ -191,7 +191,7 @@ FSL-1.1-MIT
 
 <h2>Notice</h2>
 
-Copyright ${year} nrz technology inc.
+Copyright ${year} KhulnaSoft, Ltd
 
 <h2>Terms and Conditions</h2>
 
