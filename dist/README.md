@@ -1,1 +1,0 @@
-This folder contains the built output assets for the worker "xvn" generated at 2026-02-23T16:58:39.915Z.
