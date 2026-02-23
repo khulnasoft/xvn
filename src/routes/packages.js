@@ -3,8 +3,7 @@ import validate from 'validate-npm-package-name'
 import semver from 'semver'
 import { accepts } from 'hono/accepts'
 import { DOMAIN } from '../../config.js'
-// TODO: Re-enable validation after fixing global scope issue
-// import { PackageNameSchema, VersionSchema, validateParams } from '../utils/validation'
+import { PackageNameSchema, VersionSchema, validateParams } from '../utils/validation'
 import {
   extractPackageJSON,
   packageSpec,
