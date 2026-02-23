@@ -34,7 +34,7 @@ var require_package = __commonJS({
       name: "xvn",
       version: "0.1.1",
       license: "FSL-1.1-MIT",
-      author: "KhulnaSoft Ltd. <support@khulnasoft.com> (http://khulnasoft.com)",
+      author: "nrz technology inc. <support@nrz.khulnasoft.com> (http://nrz.khulnasoft.com)",
       repository: {
         type: "git",
         url: "git+https://github.com/khulnasoft/xvn.git"
@@ -54,21 +54,20 @@ var require_package = __commonJS({
         lint: "prettier ."
       },
       devDependencies: {
+        libnpmpack: "^7.0.4",
+        "npm-registry-fetch": "^17.1.0",
+        prettier: "^3.3.3",
+        ssri: "^10.0.6",
         "@hono-rate-limiter/cloudflare": "^0.2.1",
         "@scalar/hono-api-reference": "^0.5.158",
         "get-npm-tarball-url": "^2.1.0",
         hono: "^4.5.5",
         "hono-rate-limiter": "^0.4.0",
         "js-yaml": "^4.1.0",
-        libnpmpack: "^7.0.4",
-        "npm-registry-fetch": "^17.1.0",
-        prettier: "^3.3.3",
         semver: "^7.6.3",
-        ssri: "^10.0.6",
         "streaming-tarball": "^1.0.3",
         uuid: "^10.0.0",
-        "validate-npm-package-name": "5.0.0",
-        wrangler: "^3.109.2"
+        "validate-npm-package-name": "5.0.0"
       },
       peerDependencies: {
         wrangler: "^3.84.1"
@@ -143,7 +142,7 @@ var require_api = __commonJS({
       "openapi": "3.1.0",
       "servers": [localhost],
       "info": {
-        "title": `khulnasoft serverless registry`,
+        "title": `nrz serverless registry`,
         "version": version,
         "license": {
           "identifier": "FSL-1.1-MIT",
@@ -151,14 +150,14 @@ var require_api = __commonJS({
           "url": "https://fsl.software/FSL-1.1-MIT.template.md"
         },
         "description": `
-  The **khulnasoft serverless registry** is a npm compatible JavaScript package registry which replicates core features & functionality of **\`registry.npmjs.org\`** while also introducing net-new capabilities.
+  The **nrz serverless registry** is a npm compatible JavaScript package registry which replicates core features & functionality of **\`registry.npmjs.org\`** while also introducing net-new capabilities.
 
   ### Compatible Clients
 
   <table>
     <tbody>
       <tr>
-        <td><a href="https://khulnasoft.com" alt="khulnasoft"><strong><code>khulnasoft</code></strong></a></td>
+        <td><a href="https://nrz.khulnasoft.com" alt="nrz"><strong><code>nrz</code></strong></a></td>
         <td><a href="https://npmjs.com/package/npm" alt="npm"><strong><code>npm</code></strong></a></td>
         <td><a href="https://yarnpkg.com/" alt="yarn"><strong><code>yarn</code></strong></a></td>
         <td><a href="https://pnpm.io/" alt="pnpm"><strong><code>pnpm</code></strong></a></td>
@@ -171,7 +170,7 @@ var require_api = __commonJS({
   ### Resources
 
   <ul alt="resources">
-    <li><a href="https://khulnasoft.com">https://<strong>khulnasoft.com</strong></a></li>
+    <li><a href="https://nrz.khulnasoft.com">https://<strong>nrz.khulnasoft.com</strong></a></li>
     <li><a href="https://github.com/khulnasoft/xvn">https://github.com/<strong>khulnasoft/xvn</strong></a></li>
     <li><a href="https://discord.gg/khulnasoft">https://discord.gg/<strong>khulnasoft</strong></a></li>
     <li><a href="https://x.com/khulnasoft">https://x.com/<strong>khulnasoft</strong></a></li>
@@ -192,7 +191,7 @@ FSL-1.1-MIT
 
 <h2>Notice</h2>
 
-Copyright ${year} KhulnaSoft Ltd.
+Copyright ${year} nrz technology inc.
 
 <h2>Terms and Conditions</h2>
 
@@ -4660,7 +4659,7 @@ var bearerAuth = /* @__PURE__ */ __name((options) => {
   if (options.prefix === void 0) {
     options.prefix = PREFIX;
   }
-  const realm = options.realm?.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const realm = options.realm?.replace(/"/g, '\\"');
   const prefixRegexStr = options.prefix === "" ? "" : `${options.prefix} +`;
   const regexp = new RegExp(`^${prefixRegexStr}(${TOKEN_STRINGS}) *$`);
   const wwwAuthenticatePrefix = options.prefix === "" ? "" : `${options.prefix} `;
@@ -5143,7 +5142,7 @@ var DOMAIN = `http://localhost:${import_wrangler.dev.port}`;
 var REQUEST_TIMEOUT = 60 * 1e3;
 var API_DOCS = {
   metaData: {
-    title: "khulnasoft serverless registry"
+    title: "nrz serverless registry"
   },
   hideModels: false,
   hideDownloadButton: false,
@@ -5704,7 +5703,7 @@ function isUserRoute(path) {
   const routes = [
     "ping",
     "whoami",
-    "khulnasoft/tokens",
+    "nrz/tokens",
     "npm/v1/user",
     "npm/v1/tokens",
     "org/"
