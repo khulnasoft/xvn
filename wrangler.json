@@ -9,14 +9,14 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": "xvn_local_database_id",
-      "database_name": "xvn_local_database"
+      "database_id": "xvnlocaldatabaseid",
+      "database_name": "xvnlocaldatabase"
     }
   ],
   "r2_buckets": [
     {
       "binding": "BUCKET",
-      "bucket_name": "xvn_local_bucket"
+      "bucket_name": "xvnlocalbucket"
     }
   ],
   "assets": {
