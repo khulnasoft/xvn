@@ -10,9 +10,11 @@ import { except } from 'hono/combine'
 import { apiReference } from '@scalar/hono-api-reference'
 import { secureHeaders } from 'hono/secure-headers'
 import { trimTrailingSlash } from 'hono/trailing-slash'
+import { rateLimiter } from 'hono-rate-limiter'
 
 import { PROXIES, API_DOCS } from '../config.js'
 import { verifyToken } from './utils/auth'
+import { Logger, errorHandler } from './utils/logger'
 import { getUsername, getUserProfile } from './routes/users'
 import { getToken, putToken, postToken, deleteToken } from './routes/tokens'
 import { packageSpec } from './utils/packages'
@@ -35,6 +37,15 @@ app.use('*', requestId())
 
 // Add secure headers
 app.use(secureHeaders())
+
+// TODO: Re-enable rate limiter after fixing global scope issue
+// app.use('*', rateLimiter({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // limit each IP to 100 requests per windowMs
+//   message: { error: 'Too many requests, please try again later.' },
+//   standardHeaders: true,
+//   legacyHeaders: false,
+// }))
 
 // Pretty JSON
 app.use(prettyJSON({ space: 2 }))
@@ -127,5 +138,23 @@ app.put('/:pkg', publishPackage)
 // -------------------------
 
 app.get('*', (c) => c.json({ error: 'Not found' }, 404))
+
+// Global error handler
+app.onError(errorHandler)
+
+// Log requests in development
+if (typeof globalThis !== 'undefined' && globalThis.process?.env?.NODE_ENV === 'development') {
+  app.use('*', async (c, next) => {
+    const start = Date.now()
+    await next()
+    const duration = Date.now() - start
+    Logger.info('Request completed', {
+      method: c.req.method,
+      path: c.req.path,
+      status: c.res.status,
+      duration: `${duration}ms`
+    })
+  })
+}
 
 export default app

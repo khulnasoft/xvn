@@ -2,8 +2,6 @@
 
 `xvn` aims to be a minimal "npm-compatible" registry which replicates the core features found in `registry.npmjs.org` as well as adding net-new capabilities.
 
-<img src="https://github.com/user-attachments/assets/e76c6f8a-a078-4787-963c-8ec95a879731" alt="xvn api screenshot" />
-
 **Table of Contents:**
 
 - [Quick Starts](#quick-starts)

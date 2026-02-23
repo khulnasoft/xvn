@@ -1,32 +1,26 @@
 {
-  "compatibility_date": "2024-09-19",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": "src/index.js",
-  "name": "xvn",
-  "workers_dev": true,
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_id": "xvnlocaldatabaseid",
-      "database_name": "xvnlocaldatabase"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "BUCKET",
-      "bucket_name": "xvnlocalbucket"
-    }
-  ],
-  "assets": {
-    "directory": "./src/assets/"
-  },
-  "dev": {
-    "local_protocol": "http",
-    "port": 1337
-  },
-  "placement": {
-    "mode": "smart"
-  }
+	"compatibility_date": "2024-09-19",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"main": "src/index.js",
+	"name": "xvn",
+	"workers_dev": true,
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "xvnlocaldatabase",
+			"database_id": "7528f33e-d132-43d7-84f6-c78dacc76211"
+		}
+	],
+	"assets": {
+		"directory": "./src/assets/"
+	},
+	"dev": {
+		"local_protocol": "http",
+		"port": 1337
+	},
+	"placement": {
+		"mode": "smart"
+	}
 }

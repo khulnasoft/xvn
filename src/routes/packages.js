@@ -2,7 +2,9 @@ import { Buffer } from 'node:buffer'
 import validate from 'validate-npm-package-name'
 import semver from 'semver'
 import { accepts } from 'hono/accepts'
-import { DOMAIN } from '../../config'
+import { DOMAIN } from '../../config.js'
+// TODO: Re-enable validation after fixing global scope issue
+// import { PackageNameSchema, VersionSchema, validateParams } from '../utils/validation'
 import {
   extractPackageJSON,
   packageSpec,
@@ -42,15 +44,15 @@ export async function getPackageManifest (c) {
   }
 
   if (version === 'latest') {
-    const packumentQuery = `SELECT * FROM packages WHERE name = "${pkg}"`
-    const packument = await c.env.DB.prepare(packumentQuery).run()
+    const packumentQuery = "SELECT * FROM packages WHERE name = ?1"
+    const packument = await c.env.DB.prepare(packumentQuery).bind(pkg).run()
     if (!packument.results.length) {
       return c.json({ error: 'Not found' }, 404)
     }
     version = JSON.parse(packument.results[0].tags).latest
   }
-  const versionsQuery = `SELECT * FROM versions WHERE spec = "${pkg}@${version}"`
-  const versions = await c.env.DB.prepare(versionsQuery).run()
+  const versionsQuery = "SELECT * FROM versions WHERE spec = ?1"
+  const versions = await c.env.DB.prepare(versionsQuery).bind(`${pkg}@${version}`).run()
 
   if (!versions.results || versions.results.length === 0) {
     return c.json({ error: 'Not found' }, 404)
@@ -86,16 +88,16 @@ export async function getPackagePackument (c) {
     default: 'application/json',
   })
   const isCorgi = accept === corgi
-  const packumentQuery = `SELECT * FROM packages WHERE name = "${pkg}"`
-  const packument = await c.env.DB.prepare(packumentQuery).run()
+  const packumentQuery = "SELECT * FROM packages WHERE name = ?1"
+  const packument = await c.env.DB.prepare(packumentQuery).bind(pkg).run()
 
   if (!packument.results || packument.results.length === 0) {
     return c.json({ error: 'Package not found' }, 404)
   }
 
   const latest = JSON.parse(packument.results[0].tags).latest
-  const versionsQuery = `SELECT * FROM versions WHERE spec LIKE "${pkg}@%"`
-  const versions = await c.env.DB.prepare(versionsQuery).run()
+  const versionsQuery = "SELECT * FROM versions WHERE spec LIKE ?1"
+  const versions = await c.env.DB.prepare(versionsQuery).bind(`${pkg}@%`).run()
   if (!versions.results.length) {
     c.json({ error: 'Versions not found' }, 404)
   }
@@ -129,8 +131,8 @@ export async function publishPackage (c) {
   }
 
   // query for existing versions
-  const query = `SELECT * FROM versions WHERE spec LIKE "${pkg}@%"`
-  const { results } = await c.env.DB.prepare(query).run()
+  const query = "SELECT * FROM versions WHERE spec LIKE ?1"
+  const { results } = await c.env.DB.prepare(query).bind(`${pkg}@%`).run()
   const existingVersions = results || []
   const existingVersionNumbers = existingVersions.map(r => r.spec.split('@')[1])
   const new_versions = Object.keys(body.versions).filter(v => !existingVersionNumbers.includes(v))
@@ -180,8 +182,12 @@ export async function publishPackage (c) {
       }
       const updateQuery = `
       INSERT INTO versions (spec, manifest, published_at)
-      VALUES ("${pkg}@${version}", json('${JSON.stringify(existingManifest)}'), "${new Date().toISOString()}")`
-      await c.env.DB.prepare(updateQuery).run()
+      VALUES (?, json(?), ?)`
+      await c.env.DB.prepare(updateQuery).bind(
+        `${pkg}@${version}`,
+        JSON.stringify(existingManifest),
+        new Date().toISOString()
+      ).run()
       return c.json({}, 200)
     }
   }
