@@ -1,0 +1,55 @@
+{
+  "registry": {
+    "telemetry": true,
+    "debug": false,
+    "port": 1337,
+    "deploy": {
+      "sentry": {
+        "dsn": "https://your-sentry-dsn@sentry.io/project-id",
+        "sampleRate": 1.0,
+        "tracesSampleRate": 0.1
+      },
+      "environments": {
+        "dev": {
+          "databaseName": "xvn-dev-database",
+          "bucketName": "xvn-dev-bucket",
+          "queueName": "xvn-dev-cache-refresh-queue",
+          "sentry": {
+            "environment": "development"
+          },
+          "vars": {
+            "CUSTOM_VAR": "dev-value",
+            "API_BASE_URL": "https://dev-api.example.com"
+          }
+        },
+        "staging": {
+          "databaseName": "xvn-staging-database",
+          "bucketName": "xvn-staging-bucket",
+          "queueName": "xvn-staging-cache-refresh-queue",
+          "sentry": {
+            "environment": "staging"
+          },
+          "vars": {
+            "CUSTOM_VAR": "staging-value",
+            "API_BASE_URL": "https://staging-api.example.com"
+          }
+        },
+        "prod": {
+          "databaseName": "xvn-prod-database",
+          "bucketName": "xvn-prod-bucket",
+          "queueName": "xvn-prod-cache-refresh-queue",
+          "sentry": {
+            "environment": "production",
+            "dsn": "https://your-prod-sentry-dsn@sentry.io/project-id",
+            "sampleRate": 0.1,
+            "tracesSampleRate": 0.01
+          },
+          "vars": {
+            "CUSTOM_VAR": "prod-value",
+            "API_BASE_URL": "https://api.example.com"
+          }
+        }
+      }
+    }
+  }
+}
