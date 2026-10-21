@@ -53,7 +53,7 @@ function UnreachableState() {
           <li>
             • Running{' '}
             <code className="bg-muted rounded px-1">xvn</code> (or
-            <code className="bg-muted rounded px-1">nrx -y @khulnasoft/xvn</code>
+            <code className="bg-muted rounded px-1">nrx -y @nrz/xvn</code>
             )
           </li>
           <li>

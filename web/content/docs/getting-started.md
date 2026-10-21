@@ -15,11 +15,11 @@ Get up and running in seconds:
 
 ```bash
 # Try it locally (one command, both servers)
-nrx -y @khulnasoft/xvn
-# or: npx -y @khulnasoft/xvn
+nrx -y @nrz/xvn
+# or: npx -y @nrz/xvn
 
 # Or install globally
-nrz install -g @khulnasoft/xvn
+nrz install -g @nrz/xvn
 xvn
 ```
 

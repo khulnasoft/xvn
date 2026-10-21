@@ -5,7 +5,7 @@ import path from 'node:path'
 import { spawn, execFileSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { minArgs } from 'minargs'
-import { load } from '@khulnasoft/nrz-json'
+import { load } from '@nrz/nrz-json'
 import { createRequire } from 'node:module'
 
 const defaults: Args = {
@@ -223,8 +223,8 @@ const HOST = getStringValue(
 const TELEMETRY = getBooleanValue(
   args.telemetry,
   registryConfig.telemetry ??
-    nrzConfig.telemetry ??
-    defaults.telemetry,
+  nrzConfig.telemetry ??
+  defaults.telemetry,
 )
 const DEBUG = getBooleanValue(
   args.debug,
@@ -414,7 +414,7 @@ const wranglerBin =
  * Spawn the registry worker (wrangler dev) and the optional web UI
  * (Next.js standalone server). Both run as direct children of this
  * process; SIGINT / SIGTERM and any child crash bring the whole
- * group down together so `nrx -y @khulnasoft/xvn` behaves like a single
+ * group down together so `nrx -y @nrz/xvn` behaves like a single
  * service from the user's terminal.
  */
 function runDev(): void {
@@ -534,7 +534,7 @@ function runDev(): void {
 
     console.warn(
       `XVN web UI    : missing build (${webServerEntry}). ` +
-        'Run `nrr build` or pass `--no-web` to silence this.',
+      'Run `nrr build` or pass `--no-web` to silence this.',
     )
     return
   }

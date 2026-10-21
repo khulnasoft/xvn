@@ -11,10 +11,10 @@ async function main() {
   await cp('./src/assets', './dist/assets', { recursive: true })
 
   // Copy GUI assets to dist/assets/public
-  console.log('Copying @khulnasoft/gui dist to dist/assets/public...')
+  console.log('Copying @nrz/gui dist to dist/assets/public...')
   await mkdir('./dist/assets/public', { recursive: true })
   await cp(
-    './node_modules/@khulnasoft/gui/dist',
+    './node_modules/@nrz/gui/dist',
     './dist/assets/public',
     { recursive: true },
   )

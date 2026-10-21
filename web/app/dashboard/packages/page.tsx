@@ -42,7 +42,7 @@ export default function CollaboratorsLandingPage() {
           <CardTitle>Open a package</CardTitle>
           <CardDescription>
             Enter the full name (e.g.{' '}
-            <code className="font-mono">@khulnasoft/xvn</code>).
+            <code className="font-mono">@nrz/xvn</code>).
           </CardDescription>
         </CardHeader>
         <CardContent>

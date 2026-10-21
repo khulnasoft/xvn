@@ -1,5 +1,5 @@
 {
-  "name": "@khulnasoft/xvn",
+  "name": "@nrz/xvn",
   "version": "1.0.0-rc.18",
   "description": "nrz serverless registry – a minimal npm-compatible package registry",
   "repository": {
@@ -45,7 +45,7 @@
     "@hono/zod-openapi": "^0.19.10",
     "@libsql/client": "^0.15.15",
     "@scalar/hono-api-reference": "^0.9.28",
-    "@khulnasoft/nrz-json": "^1.0.0-rc.29",
+    "@nrz/nrz-json": "^1.0.0-rc.29",
     "better-auth": "^1.6.11",
     "drizzle-orm": "^0.44.7",
     "hono": "^4.10.8",
@@ -62,7 +62,7 @@
     "@types/node": "^22.10.0",
     "@types/semver": "^7.5.8",
     "@types/validate-npm-package-name": "^4.0.2",
-    "@khulnasoft/gui": "^1.0.0-rc.18",
+    "@nrz/gui": "^1.0.0-rc.18",
     "chokidar-cli": "^3.0.0",
     "drizzle-kit": "^0.31.8",
     "esbuild": "^0.25.12",

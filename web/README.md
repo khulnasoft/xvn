@@ -1,4 +1,4 @@
-# @khulnasoft/xvn-web
+# @nrz/xvn-web
 
 Web UI for the **nrz serverless registry**. Public package browsing
 plus an authenticated dashboard for token + collaborator management,

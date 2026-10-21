@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
 
   // Produce a self-contained Node server at `.next/standalone/web/server.js`
   // with every traced dependency copied in. The `xvn` CLI bin spawns this
-  // server alongside the registry worker so `nrx -y @khulnasoft/xvn` can ship
+  // server alongside the registry worker so `nrx -y @nrz/xvn` can ship
   // both processes from a single published package — no `next start`, no
   // workspace `node_modules`, no `nrz install` required at runtime.
   //

@@ -13,7 +13,7 @@ edge network.
 ## 🚀 Quick Start
 
 ```bash
-nrx -y @khulnasoft/xvn
+nrx -y @nrz/xvn
 # XVN Running: http://localhost:1337
 ```
 
